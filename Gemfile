@@ -9,6 +9,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'factory_bot_rails'
+gem 'hirb'
 gem 'puma', '~> 4.1'
 gem 'rspec-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
