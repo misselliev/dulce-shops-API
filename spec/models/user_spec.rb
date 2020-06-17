@@ -9,17 +9,19 @@ RSpec.describe User, type: :model do
   before { invalid_user.save }
   before { user2.save }
 
-  it 'should be valid' do
+  it 'should be valid when all fields are completed' do
     expect(user).to be_valid
-  end
-
-  it 'password should not be less than 6 characters' do
     expect(invalid_user).to_not be_valid
   end
 
-  it 'name and last name should be provided' do
-    expect(invalid_user).to_not be_valid
+  it 'password should at least 6 characters' do
     expect(user).to be_valid
+    expect(invalid_user).to_not be_valid
+  end
+
+  it 'name and lastname should be provided' do
+    expect(user).to be_valid
+    expect(invalid_user).to_not be_valid
   end
 
   it 'address should be provided' do
@@ -27,11 +29,30 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
+  it 'zipcode should be provided' do
+    expect(invalid_user).to_not be_valid
+    expect(user).to be_valid
+  end
+
+  it 'is not valid without an username' do
+    expect(invalid_user).to_not be_valid
+  end
+
+  it 'is not valid without a password' do
+    invalid_user.password = nil
+    expect(invalid_user).to_not be_valid
+  end
+
+  it 'is not valid without a proper email' do
+    expect(user).to be_valid
+    expect(invalid_user).to_not be_valid
+  end
+
   it 'has a unique username' do
     expect(user2).to_not be_valid
   end
 
-  it 'had a unique email' do
+  it 'has a unique email' do
     expect(user2).to_not be_valid
   end
 end
