@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 FactoryBot.define do
   factory :user, aliases: [:creator] do
     trait :valid_user do
